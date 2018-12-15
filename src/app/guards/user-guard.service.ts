@@ -1,8 +1,22 @@
 import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+
+import { WebsocketService } from '../services/websocket.service';
 
 @Injectable()
-export class UserGuardService {
+export class UserGuard implements CanActivate {
 
-  constructor() { }
+  constructor(public wsService: WebsocketService,
+    private router: Router) { }
 
+  canActivate() {
+
+    if (this.wsService.getUser()) {
+      return true;
+    }
+    else {
+      this.router.navigateByUrl('/');
+      return false;
+    }
+  }
 }
