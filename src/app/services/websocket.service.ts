@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 
+import { User } from '../classes/user';
+
 @Injectable()
 export class WebsocketService {
 
   public socketStatus = false;
+  public user: User;
 
   constructor(private socket: Socket) {
 
@@ -14,12 +17,10 @@ export class WebsocketService {
 
   checkStatus() {
     this.socket.on('connect', () => {
-      console.log('connected to server');
       this.socketStatus = true;
     });
 
     this.socket.on('disconnect', () => {
-      console.log('disconnected from server');
       this.socketStatus = false;
     });
   }
@@ -30,5 +31,11 @@ export class WebsocketService {
 
   listen(event: string){
     return this.socket.fromEvent(event);
+  }
+
+  loginWS(name: string){
+    this.emit('configure-user', {name}, (resp) => {
+      console.log(resp);
+    });
   }
 }

@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<h1>Login</h1>
+<hr>
+
+<div class="row justify-content-center">
+  <div class="col-9">
+    <form class="p-4" (ngSubmit)="signin()">
+      <input type="text" 
+             [(ngModel)]="username"
+             [ngModelOptions]="{standalone: true}"
+             class="form-control"
+             placeholder="Username"
+             autofocus/>
+             <button [disabled]="!username"
+                     class="btn btn-primary btn-block margin-top-10">Log in</button>
+    </form>
+  </div>
+</div>

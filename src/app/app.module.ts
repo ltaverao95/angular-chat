@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 
 const config: SocketIoConfig = { 
   url: environment.wsURL, 
@@ -19,7 +20,6 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { LoginComponent } from './pages/login/login.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
   imports: [
     BrowserModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    AppRoutingModule
   ],
   providers: [
     WebsocketService,
