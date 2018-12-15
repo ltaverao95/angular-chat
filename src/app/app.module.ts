@@ -15,13 +15,19 @@ import { FooterComponent } from './components/footer/footer.component';
 import { WebsocketService } from './services/websocket.service';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './components/chat/chat.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    ChatComponent
+    ChatComponent,
+    UsersListComponent,
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
