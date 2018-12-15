@@ -8,8 +8,8 @@ export class ChatService {
 
   sendMessage(message: string){
     const payload = {
-      de: 'Fernando',
-      cuerpo: message
+      from: this.wsService.user.name,
+      body: message
     };
 
     this.wsService.emit('message', payload);
